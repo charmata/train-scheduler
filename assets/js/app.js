@@ -18,10 +18,11 @@ $(document).ready(function() {
     tr.append($("<th>").text(data.destination));
     tr.append($("<th>").text(data.frequency));
 
-    var minutesAway = Math.abs(
-      moment().diff(moment(data.firstTrain, "HH:mm"), "minutes") %
-        data.frequency
-    );
+    var minutesAway =
+      Math.abs(
+        moment().diff(moment(data.firstTrain, "HH:mm"), "minutes") %
+          data.frequency
+      ) + 1;
     var nextArrival = moment()
       .add(minutesAway, "minutes")
       .format("hh:mm A");
